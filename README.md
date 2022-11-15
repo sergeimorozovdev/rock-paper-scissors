@@ -8,4 +8,7 @@ Use **GET {host}/game/rps/figures** to get supported game figures.
 
 Use **POST {host}/game/rps/throw** with body **{"figure":"..."}** (where "figure" is supported figure) to play
 
-**TODO**: Implement Apiary client to work with https://curbrockpaperscissors.docs.apiary.io
+**TODO:**
+1. Implement Apiary client to work with https://curbrockpaperscissors.docs.apiary.io
+2. Add docker file
+3. Extend game combinations
