@@ -25,8 +25,7 @@ public class RPSGameServiceImpl implements RPSGameService {
         PlayResult playResult = DEFEAT;
         if (opponentThrow == playerThrow) {
             playResult = DRAW;
-        }
-        if (playerThrow.beats(opponentThrow)) {
+        } else if (playerThrow.beats(opponentThrow)) {
             playResult = WIN;
         }
         String message = prepareMessage(opponentThrow, playResult);
