@@ -1,4 +1,4 @@
-package com.smorozov.rockpaperscissors.service.impl;
+package com.smorozov.rockpaperscissors.service;
 
 import com.smorozov.rockpaperscissors.model.ThrowRequest;
 import com.smorozov.rockpaperscissors.model.ThrowResponse;

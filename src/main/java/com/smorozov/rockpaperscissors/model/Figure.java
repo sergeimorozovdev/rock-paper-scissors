@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-//@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Figure {
     ROCK("PAPER"),
     PAPER("SCISSOR"),

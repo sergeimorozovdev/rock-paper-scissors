@@ -12,3 +12,4 @@ Use **POST {host}/game/rps/throw** with body **{"figure":"..."}** (where "figure
 1. Implement Apiary client to work with https://curbrockpaperscissors.docs.apiary.io
 2. Add docker file
 3. Extend game combinations
+4. Add exception handling

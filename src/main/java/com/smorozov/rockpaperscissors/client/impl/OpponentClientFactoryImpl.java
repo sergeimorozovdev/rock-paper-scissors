@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-import static com.smorozov.rockpaperscissors.client.model.ClientType.APIARY;
+import static com.smorozov.rockpaperscissors.client.model.ClientType.REMOTE;
 import static com.smorozov.rockpaperscissors.client.model.ClientType.LOCAL;
 
 @Component
 public class OpponentClientFactoryImpl implements OpponentClientFactory {
 
-    @Value("${rps.opponent.client}")
-    private ClientType clientType = LOCAL;
+    @Value("${rps.opponent.client:LOCAL}")
+    private ClientType clientType;
 
     private OpponentClient opponentClient;
 
@@ -28,8 +28,8 @@ public class OpponentClientFactoryImpl implements OpponentClientFactory {
     public void postConstruct() {
         if (clientType == LOCAL) {
             opponentClient = new LocalClientImpl();
-        } else if (clientType == APIARY) {
-            opponentClient = new ApiaryClientImpl();
+        } else if (clientType == REMOTE) {
+            opponentClient = new RemoteClientImpl();
         }
     }
 }

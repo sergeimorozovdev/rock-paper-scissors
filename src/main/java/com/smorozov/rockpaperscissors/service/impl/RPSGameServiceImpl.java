@@ -6,6 +6,7 @@ import com.smorozov.rockpaperscissors.model.Figure;
 import com.smorozov.rockpaperscissors.model.PlayResult;
 import com.smorozov.rockpaperscissors.model.ThrowRequest;
 import com.smorozov.rockpaperscissors.model.ThrowResponse;
+import com.smorozov.rockpaperscissors.service.RPSGameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +23,20 @@ public class RPSGameServiceImpl implements RPSGameService {
         OpponentClient client = clientFactory.getClient();
         Figure opponentThrow = client.getOpponentThrow();
         Figure playerThrow = request.getFigure();
-        PlayResult playResult = DEFEAT;
+
+        PlayResult compareResult = getCompareResult(opponentThrow, playerThrow);
+        String message = prepareMessage(opponentThrow, compareResult);
+        return new ThrowResponse(compareResult, message);
+    }
+
+    private PlayResult getCompareResult(Figure opponentThrow, Figure playerThrow) {
         if (opponentThrow == playerThrow) {
-            playResult = DRAW;
+            return DRAW;
         } else if (playerThrow.beats(opponentThrow)) {
-            playResult = WIN;
+            return WIN;
+        } else {
+            return DEFEAT;
         }
-        String message = prepareMessage(opponentThrow, playResult);
-        return new ThrowResponse(playResult, message);
     }
 
     private String prepareMessage(Figure opponentThrow, PlayResult playResult) {
